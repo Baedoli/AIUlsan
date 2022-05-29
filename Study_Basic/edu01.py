@@ -1,4 +1,5 @@
 # 교육 1일 차 ...
+# 교육 준비 잘 합시다 ..
 from unicodedata import name
 
 

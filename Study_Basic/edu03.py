@@ -1,4 +1,6 @@
 # 교육 3일차 ... 
+# 교육 준비 잘 합시다 ..
+
 from audioop import avg
 
 from sklearn.feature_selection import f_classif
