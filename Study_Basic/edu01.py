@@ -1,3 +1,4 @@
+# 교육 1일 차
 from unicodedata import name
 
 
