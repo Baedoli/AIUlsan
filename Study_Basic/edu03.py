@@ -1,4 +1,4 @@
-
+# 교육 3일차 
 from audioop import avg
 
 from sklearn.feature_selection import f_classif
