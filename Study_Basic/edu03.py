@@ -1,11 +1,6 @@
 # 교육 3일차 ... 
 # 교육 준비 잘 합시다 ..
 
-from audioop import avg
-
-from sklearn.feature_selection import f_classif
-
-
 print('# 리스트 만들기 ')
 list1 = [10,20,30,40,50]
 list2 = ['A','B','C','D','E']
