@@ -31,6 +31,7 @@ score = [45, 92, 88, 34, 88, 95, 82, 59, 70, 76]
 rank = []
 tmp_rank = 1
 tmp_score = 0
+
 for i in range(10) :
     tmp_score = score[i]
     tmp_rank = 1
@@ -56,3 +57,16 @@ for i in range(1,12,2) :
 total = e_sum + (o_sum*3)
 total = total % 10
 print(total)         
+
+# 두번째 옵션 ...
+barcode = [8,8,0,1,0,5,1,1,4,8,8,5]
+e_sum = 0; o_sum = 0; total = 0
+for i in range(12) :
+    if (i+1)%2==0 :
+        o_sum += barcode[i]
+    else :
+        e_sum += barcode[i]    
+
+total = e_sum + (o_sum*3)
+total = total % 10
+print(' 검사수 :',total)         
