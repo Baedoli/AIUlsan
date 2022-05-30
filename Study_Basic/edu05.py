@@ -59,6 +59,7 @@ else :
  # Mission 3   
 import calendar
 import random
+import string
 cnt = 0
 num1 = random.randint(1,10)
 while True :
@@ -91,7 +92,7 @@ for  n1 in range(1,10) :
         s1 = s1+str('%2d * %d = %2d'%(n2,n1,n2*n1))     
     print(s1)    
 
-import calendar
+import calendar 
 calendar.prmonth(2022,5)
 
 import calendar as cal
@@ -100,3 +101,62 @@ cal.prmonth(2022,5)
 from calendar import prmonth
 prmonth(2022,5)
 
+import random
+print(random.random())
+print(random.uniform(1,10))
+print(random.randint(1,10))
+print(random.randrange(0,101,2))
+print(random.choice('abcdefghij'))
+print(random.sample([1,2,3,4,5],3))
+items = [1,2,3,4,5,6,7]
+random.shuffle(items)
+print(items)
+
+import random
+list1 = []
+for i in range(10) :
+    num = random.randrange(0,10)
+    list1.append(num)
+print(list1)
+
+import random
+list1 = []
+for _ in range(10) :
+    num = random.randrange(0,10)
+    list1.append(num)
+print(list1)
+
+import random
+list1 = []
+for i in range(10) :
+    while num in list1 :
+        num = random.randrange(0,10)
+    list1.append(num)
+print(list1)
+
+import random
+list1 = [1,2,3,4,5]
+random.shuffle(list1)
+print(list1)
+
+import random
+menu = ['김치찌게','불고기','모듭초밥','짜장면','짬뽕']
+lunch = random.choice(menu)
+print(lunch)
+
+import random
+import string
+pw1 = "".join([random.choice(string.ascii_uppercase) for x in range(10)])
+pw2 = "".join([random.choice(string.ascii_lowercase) for x in range(10)])
+pw3 = "".join([random.choice(string.ascii_letters) for x in range(10)])
+
+print(pw1)
+print(pw2)
+print(pw3)
+
+import random as rd
+lotto_list = list(range(1,46))
+rd.shuffle(lotto_list)
+lotto_list = lotto_list[:6]
+lotto_list.sort()
+print('이번 주 로또 추천 번호 :',lotto_list)
