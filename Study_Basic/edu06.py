@@ -59,7 +59,7 @@ total = total % 10
 print(total)         
 
 # 두번째 옵션 ...
-barcode = [8,8,0,1,0,5,1,1,4,8,8,5]
+barcode = [8,8,0,1,0,5,1,1,4,8,8,5,5]
 e_sum = 0; o_sum = 0; total = 0
 for i in range(12) :
     if (i+1)%2==0 :
@@ -69,4 +69,7 @@ for i in range(12) :
 
 total = e_sum + (o_sum*3)
 total = total % 10
-print(' 검사수 :',total)         
+if barcode[12] == total :
+    print(' 검사 수가 정확합니다. 검사수 :',total)         
+else :
+    print(' 검사 수가 부정확합니다. 검사수 :',total, ' 확인 바랍니다.')                
