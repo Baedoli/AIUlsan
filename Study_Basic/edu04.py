@@ -151,6 +151,37 @@ else :
         print('남자') 
     else :
         print('여자')
-print(year,sex)        
+print(year,sex)    
                         
+jumin = input('주민 번호를 입력하세요. (221011-4) : ')
+year = int(jumin[0:2])
+pre_year = int(jumin[0:2])
+sex = int(jumin[7:])
+if sex%2==0 :
+    pre_year = (19 if sex == 2 else 20)
+    print(f'출생년도 : {pre_year}{year} 년 인 여성 입니다.') 
+else :
+    pre_year = (19 if sex == 1 else 20)
+    print(f'출생년도 : {pre_year}{year} 년 인 남성 입니다.')          
 
+id1_ = 'bae123'; pass1_ = 'p123'
+id2_= input('아이디를 입력하세요.')
+pass2_ = input('비밀번호를 입력하세요.')
+pass_cnt = 0
+while True :
+    if pass_cnt == 3 :
+        id2_= input('아이디를 입력하세요.')
+        pass2_ = input('비밀번호를 입력하세요.')
+        pass_cnt = 0
+    if id1_ == id2_ :
+        if pass1_ == pass2_ :
+            print('로그인 성공')
+            break
+        else :
+            pass_cnt += 1
+            print(f'비밀번호를 {pass_cnt}번 잘못 입력 하셨습니다.')
+            pass2_ = input('비밀번호를 입력하세요.')        
+    else :
+        print('아이디가 틀렸습니다.')
+        id2_= input('아이디를 입력하세요.')
+        

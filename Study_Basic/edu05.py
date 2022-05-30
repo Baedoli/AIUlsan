@@ -160,3 +160,19 @@ rd.shuffle(lotto_list)
 lotto_list = lotto_list[:6]
 lotto_list.sort()
 print('이번 주 로또 추천 번호 :',lotto_list)
+
+import random as rd
+print('이번주 추천 로또 번호는 아래와 같습니다.')
+for _ in range(5) :
+    lotto_list = list(range(1,46))
+    rd.shuffle(lotto_list)
+    lotto_list = lotto_list[:6]
+    lotto_list.sort()
+    print(lotto_list)
+    
+import random as rd
+
+a = list(range(1,11))
+b = rd.sample(a,3)
+print('1 에서 10까지 임의의 정수 :',b)    
+    
