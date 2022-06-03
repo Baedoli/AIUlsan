@@ -1,0 +1,2 @@
+Total Sales Amount = 5000000
+Avg Daily Sales Amount = 1000000.0
