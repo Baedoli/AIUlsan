@@ -110,3 +110,31 @@ data = [['Kim','A0','B0','B+'],
 df = pd.DataFrame(data, columns=['Family Name','Python','Java','C++'], index=['A','B','C','D'])
 df
 df.transpose()
+
+dates = pd.date_range('20210301',periods=6)
+df = pd.DataFrame(np.random.randn(6,4),index=dates,columns=['A','B','C','D'])
+
+df[df.A > 0]
+df[df > 0]
+
+df['E'] = ['one','one','two','three','four','three']
+df['E'].isin(['two','four'])
+df[df['E'].isin(['two','four'])]
+
+bank_client_df = {'Bank_Client_ID': [111,222,383,44,555, 666,777,608],
+                  'Bank_Client_Nane' : ['Willian', 'Steve', 'Vanes', 'Ryan', 'Henry', 'Dinel', 'Jackson', 'John'],
+                  'New_North [$]' :[100, 200,1000, 15000, 300, 1500,5000, 3500],
+                  'With_bank' : [1,3,5,10,7,2,5,6]}
+
+df = pd.DataFrame(bank_client_df)
+
+# 1. 5년 이상 고객 만 추림 ... 
+df[df.With_bank>=5]
+# 2. 위의 항목 결과 값을 bank_client5_df 이름으로 재정의 하세요.
+bank_client5_df = df[df.With_bank>=5]
+# 재정의 후 index 재정의 ...
+bank_client5_df = bank_client5_df.reset_index()
+# 3. bank_client5_df 에 10년된 고객의 정보를 True, False 로 반환 ..
+bank_client5_df['With_bank'].isin([10])
+# 4. 10년된 고객만 보이게 데이터 프레임을 만드세요.
+bank_client5_df[bank_client5_df['With_bank'].isin([10])]
