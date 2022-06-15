@@ -1,4 +1,5 @@
 
+from re import A
 from turtle import color
 import pandas as pd
 import numpy as np
@@ -92,8 +93,36 @@ size=[2441,2312,1031,1233]
 label=['A형','B형','AB형','O형']
 color = ['darkmagenta','deeppink','hotpink','pink']
 plt.figure(figsize=(6,6))
+wedgeprops={'width':1,'edgecolor':'w','linewidth':1,'linestyle':'--'}
 plt.axis('equal')
-plt.pie(size,labels=label,autopct='%.1f%%',explode=(0,0,0.1,0), colors=color, shadow=True)
+plt.pie(size,labels=label,autopct='%.1f%%',explode=(0,0,0.1,0), colors=color, shadow=True, wedgeprops=wedgeprops)
 plt.legend()
+plt.show()
+
+year = ['2018','2019','2020']
+values = [100,400,900]
+plt.figure(figsize=(10,6))
+#plt.bar(year,values,align='edge',edgecolor='lightgray',linewidth=5)
+plt.bar(year,values,align='edge',edgecolor='red',linewidth=5)
+plt.show()
+
+A = [5,30,45,22]
+B = [5,25,50,20]
+plt.figure(figsize=(10,6))
+plt.bar(np.arange(4),A)
+plt.bar(np.arange(4),B,bottom=A)
+plt.show()
+
+yaer = ['2018','2019','2020']
+values = [100,400,900]
+plt.figure(figsize=(6,6))
+plt.barh(year,values,height=0.4)
+plt.show()
+
+A = [5,30,45,22]
+B = [5,25,50,20]
+plt.figure(figsize=(6,6))
+plt.barh(np.arange(4),A)
+plt.barh(np.arange(4),B,left=A)
 plt.show()
 
