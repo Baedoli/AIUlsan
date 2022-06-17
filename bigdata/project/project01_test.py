@@ -118,6 +118,32 @@ plt.ylabel('CCTV 대수')
 plt.grid()
 plt.show()
 
+data_result['ERROR'] = np.abs(data_result['소계']-f1(data_result['인구수']))
+data_result.head()
+df_sort = data_result.sort_values(by=data_result.columns[9],ascending=False)
+df_sort.head()
+
+df_sort.to_csv(path+'/bigdata/data/'+'cctv_pop.csv',encoding='utf-8-sig')
+cctv_pop = pd.read_csv(path+'/bigdata/data/'+'cctv_pop.csv')
+cctv_pop
+
+data_result.head()
+
+plt.figure(figsize=(12,6))
+plt.scatter(data_result['인구수'],data_result['소계'],c=data_result['ERROR'],s=50)
+plt.plot(fx,f1(fx),ls='dashed',lw=3,color='g')
+# 오차가 제일 큰 구 기준으로 타이틀 찍어 줌.
+for n in range(10) :
+    plt.text(df_sort['인구수'][n]*1, df_sort['소계'][n]*1,df_sort.index[n],fontsize=15)
+plt.xlabel('인구수')
+plt.ylabel('인구당 비율')
+plt.colorbar()
+plt.grid()
+plt.show()
+
+
+
+
 
 df = pd.read_csv(path+'/bigdata/data/dataframe01.csv')
 
