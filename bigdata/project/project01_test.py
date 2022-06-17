@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import os
+import matplotlib.pyplot as plt
 
 path = os.getcwd()
 
@@ -74,7 +75,48 @@ data_result.head()
 data_result.set_index('구별',inplace=True)
 data_result.head()
 
+np.corrcoef(data_result['비율_고령자'],data_result['소계'])
+np.corrcoef(data_result['비율_외국인'],data_result['소계'])
+np.corrcoef(data_result['인구수'],data_result['소계'])
+np.corrcoef(data_result['한국인'],data_result['소계'])
+np.corrcoef(data_result['외국인'],data_result['소계'])
+np.corrcoef(data_result['고령자'],data_result['소계'])
 
+data_result.sort_values(by=data_result.columns[0],ascending=False).head()
+data_result.sort_values(by=data_result.columns[2],ascending=False).head()
+
+plt.rcParams['axes.unicode_minus'] = 'False'
+plt.rc('font',family = 'AppleGothic')
+
+# dataFrame 에서 바로 plot 해서 차트 그리기...
+data_result['소계'].plot(kind='barh',grid=True,figsize=(10,7))
+# dataFrame 에서 Sort 후 plot 해서 차트 그리기...
+data_result['소계'].sort_values().plot(kind='barh',grid=True,figsize=(10,7))
+plt.show()
+
+data_result['CCTV RATE'] = data_result['소계']/data_result['인구수']*100
+data_result.head()
+data_result['CCTV RATE'].sort_values().plot(kind='barh',grid=True,figsize=(10,7))
+plt.show()
+
+plt.figure(figsize=(8,6))
+plt.scatter(data_result['인구수'],data_result['소계'])
+plt.xlabel('인구수')
+plt.ylabel('CCTV 대수')
+plt.grid()
+plt.show()
+
+fp1 = np.polyfit(data_result['인구수'],data_result['소계'],1)
+f1 = np.poly1d(fp1)
+fx = np.linspace(100000,700000,100)
+
+plt.figure(figsize=(8,6))
+plt.scatter(data_result['인구수'],data_result['소계'],s=50)
+plt.plot(fx,f1(fx),ls='dashed',lw=3,color='g')
+plt.xlabel('인구수')
+plt.ylabel('CCTV 대수')
+plt.grid()
+plt.show()
 
 
 df = pd.read_csv(path+'/bigdata/data/dataframe01.csv')
