@@ -52,6 +52,31 @@ pop_seoul[pop_seoul['구별'].isnull()]
 # 검색된 row index 확인 후 해당 레코드 삭제 ..
 pop_seoul.drop([26],inplace=True)
 
+#인구수 대비 외국인, 고령자 비율 추가
+pop_seoul['비율_외국인'] = (pop_seoul['외국인']/pop_seoul['인구수'])*100
+pop_seoul['비율_고령자'] = (pop_seoul['고령자']/pop_seoul['인구수'])*100
+pop_seoul.head()
+
+pop_seoul.sort_values(by=pop_seoul.columns[1],ascending=False).head()
+pop_seoul.sort_values(by=pop_seoul.columns[1],ascending=True).head()
+
+# 두개의 data frame 을 합친다. merge 이용... ( 구별 칼럼을 key 칼럼으로 활용 )
+data_result = pd.merge(CCTV_Seoul,pop_seoul,on='구별')
+data_result.head()
+
+del data_result['2013년도 이전']
+del data_result['2014년']
+del data_result['2015년']
+del data_result['2016년']
+data_result.head()
+
+# 기존의 index 는 정수형이 지만 index 를 구별로 변환 ...
+data_result.set_index('구별',inplace=True)
+data_result.head()
+
+
+
+
 df = pd.read_csv(path+'/bigdata/data/dataframe01.csv')
 
 df.drop([1,2],inplace=True)
@@ -60,3 +85,8 @@ df.drop(['A','B'],axis=1,inplace=True)
 df.drop(columns=['A','B'],axis=1,inplace=True)
 df.head()
 
+df3 = pd.read_csv(path+'/bigdata/data/dataframe03.csv')
+
+df3.head()
+df3.index = ['A','B','C','D']
+df3.drop(['A'],axis=0,inplace=True)
