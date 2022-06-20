@@ -24,3 +24,9 @@ pop_seoul.rename(columns={pop_seoul.columns[0]:'구별',
                           pop_seoul.columns[3]:'외국인',
                           pop_seoul.columns[4]:'고령자'}, inplace=True)
 
+pop_seoul.drop([0], inplace=True)
+pop_seoul['구별'].unique()
+pop_seoul[pop_seoul['구별'].isnull()]
+pop_seoul.drop([26],inplace=True)
+pop_seoul['비율_외국인'] = (pop_seoul['외국인']/pop_seoul['인구수'])*100
+pop_seoul['비율_고령자'] = (pop_seoul['고령자']/pop_seoul['인구수'])*100
