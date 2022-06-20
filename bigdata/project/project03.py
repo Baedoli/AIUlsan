@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import csv
+import math
 
 plt.rcParams['axes.unicode_minus'] = 'False'
 plt.rc('font',family = 'AppleGothic')
@@ -156,4 +157,31 @@ for row in data :
 
 plt.figure(figsize=(6,4))
 plt.bar(range(101),ingu)
+plt.show()
+
+# 남녀 연령대별 성비 현황을 scatter 로 표시 하기 ( 남여 성비 차이 .. )
+f = open(path+'/bigdata/data/gender4.csv')
+data = csv.reader(f)
+
+m = []  # 남자
+f = []  # 여자
+size = []
+
+m_name = input('원하는 동네 입력 : ')
+for row in data :
+    if m_name in row[0] :
+        for i in range(3,104) :
+            m.append(int(row[i]))
+            f.append(int(row[i+103]))
+            size.append(math.sqrt(int(row[i])+int(row[i+103])))
+        break
+
+plt.figure(figsize=(6,4))
+plt.style.use('ggplot')
+plt.scatter(m,f,s=size,c=range(101),alpha=0.5,cmap='jet')
+plt.plot(range(max(m)),range(max(m)),color='g')
+plt.colorbar()
+plt.title(m_name+' 지역의 성별 인구 비율')
+plt.xlabel('남성 인구수')
+plt.ylabel('여성 인구수')
 plt.show()
