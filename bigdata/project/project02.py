@@ -1,6 +1,5 @@
 
 from cProfile import label
-from turtle import color
 import pandas as pd
 import numpy as np
 import os
@@ -21,7 +20,8 @@ traffic_accident.describe()
 
 traffic_accident.head()
 
-traffic_accident.drop(['중상자수','경상자수','부상신고자수'],axis=1,inplace=True)
+columns = ['중상자수','경상자수','부상신고자수']
+traffic_accident.drop(columns,axis=1,inplace=True)
 df = traffic_accident
 df.head()
 
@@ -31,11 +31,19 @@ df_night = df[(df.주야=='야')]
 df_day.head()
 df_night.head()
 
+n_data = len(df_night)
+x = np.arange(n_data)
+bar_width = 0.4
+y1 = df_day['사고건수']
+y2 = df_night['사고건수']
+xticks_list = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+
+
 plt.figure(figsize=(8,4))
-plt.bar(df_day['발생월'],df_day['사고건수'], color='b',width=0.35, label='주간')
-plt.bar(df_night['발생월']+0.35,df_night['사고건수'], color='r',width=0.35, label='야간')
+plt.bar(x,y1,width=bar_width,label='주간')
+plt.bar(x+bar_width,y2,width=bar_width,label='야간')
 plt.title('월별 주야 사고 건수')
-plt.xticks(range(12), range(12)+'월', fontsize=15)
+plt.xticks(x+0.2, xticks_list, fontsize=15)
 plt.xlabel('월')
 plt.ylabel('사고건수')
 plt.legend()
@@ -49,11 +57,18 @@ df_death_rate_night = df[df.주야=='야']
 df_death_rate_day.head()
 df_death_rate_night.head()
 
+n_data = len(df_death_rate_night)
+x = np.arange(n_data)
+bar_width = 0.4
+y1 = df_death_rate_day['사망자비율']
+y2 = df_death_rate_night['사망자비율']
+xticks_list = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+
 plt.figure(figsize=(8,4))
-plt.bar(df_death_rate_day['발생월'],df_death_rate_day['사망자비율'], color='b',width=0.35, label='주간')
-plt.bar(df_death_rate_night['발생월']+0.35,df_death_rate_night['사망자비율'], color='r',width=0.35, label='야간')
+plt.bar(x,y1,width=bar_width,label='주간')
+plt.bar(x+bar_width,y2,width=bar_width,label='야간')
 plt.title('월별 주야 사망자 비율(%)')
-plt.xticks(range(12), range(12)+'월', fontsize=15)
+plt.xticks(x+0.2,xticks_list, fontsize=15)
 plt.xlabel('월')
 plt.ylabel('사망자 비율(%)')
 plt.legend()
