@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6eb8be2aec77e3119ab6fc9257d84b64 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_6eb8be2aec77e3119ab6fc9257d84b64" ></div>
+        
+</body>
+<script>    
+    
+            var map_6eb8be2aec77e3119ab6fc9257d84b64 = L.map(
+                "map_6eb8be2aec77e3119ab6fc9257d84b64",
+                {
+                    center: [37.33485704383146, -122.0089505445861],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e3b3f076d71006ba14d71b0efe0304f2 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_6eb8be2aec77e3119ab6fc9257d84b64);
+        
+    
+            var marker_45f0b84c18ef91ca1d81e1d4be0944c8 = L.marker(
+                [37.33485704383146, -122.0089505445861],
+                {}
+            ).addTo(map_6eb8be2aec77e3119ab6fc9257d84b64);
+        
+    
+            var icon_4e3c2bc90afda5e5cac0af90f5ae350b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "fa-apple", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_45f0b84c18ef91ca1d81e1d4be0944c8.setIcon(icon_4e3c2bc90afda5e5cac0af90f5ae350b);
+        
+    
+        var popup_8897849b280daed666dc7175c05b0c0c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bea81fe122802207ca79959bd803ee48 = $(`<div id="html_bea81fe122802207ca79959bd803ee48" style="width: 100.0%; height: 100.0%;"><a href="http://www.apple.com" target="_blank">Apple</a></div>`)[0];
+            popup_8897849b280daed666dc7175c05b0c0c.setContent(html_bea81fe122802207ca79959bd803ee48);
+        
+
+        marker_45f0b84c18ef91ca1d81e1d4be0944c8.bindPopup(popup_8897849b280daed666dc7175c05b0c0c)
+        ;
+
+        
+    
+    
+            marker_45f0b84c18ef91ca1d81e1d4be0944c8.bindTooltip(
+                `<div>
+                     Apple Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_49d89785916441483629041b5287abe6 = L.circleMarker(
+                [37.33485704383146, -122.0089505445861],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_6eb8be2aec77e3119ab6fc9257d84b64);
+        
+    
+        var popup_bd07da1099163b551b81b189eea381f8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3ea102070e56fdb9c61baa2fbe95e09b = $(`<div id="html_3ea102070e56fdb9c61baa2fbe95e09b" style="width: 100.0%; height: 100.0%;">Apple Park Around</div>`)[0];
+            popup_bd07da1099163b551b81b189eea381f8.setContent(html_3ea102070e56fdb9c61baa2fbe95e09b);
+        
+
+        circle_marker_49d89785916441483629041b5287abe6.bindPopup(popup_bd07da1099163b551b81b189eea381f8)
+        ;
+
+        
+    
+</script>
