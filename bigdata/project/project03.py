@@ -160,7 +160,7 @@ plt.bar(range(101),ingu)
 plt.show()
 
 # 남녀 연령대별 성비 현황을 scatter 로 표시 하기 ( 남여 성비 차이 .. )
-f = open(path+'/bigdata/data/gender4.csv')
+f = open(path+'/bigdata/data/gender2.csv')
 data = csv.reader(f)
 
 m = []  # 남자
@@ -176,7 +176,7 @@ for row in data :
             size.append(math.sqrt(int(row[i])+int(row[i+103])))
         break
 
-plt.figure(figsize=(6,4))
+plt.figure(figsize=(6,4), dpi=150)
 plt.style.use('ggplot')
 plt.scatter(m,f,s=size,c=range(101),alpha=0.5,cmap='jet')
 plt.plot(range(max(m)),range(max(m)),color='g')
