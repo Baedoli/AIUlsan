@@ -2,6 +2,11 @@ import pandas as pd
 import numpy as np
 import os
 import googlemaps
+import matplotlib.pyplot as plt
+import seaborn as sns 
+
+plt.rc('font',family='AppleGothic')
+plt.rcParams['axes.unicode_minus'] = False
 
 path = os.getcwd()
 path = path+'/bigdata/data/'
@@ -97,4 +102,7 @@ crime_analysis_norm[['인구수','CCTV']] = result_CCTV[['인구수','소계']]
 crime_analysis_norm['범죄'] = np.sum(crime_analysis_norm[col],axis=1)
 crime_analysis_norm['검거'] = np.sum(crime_analysis_norm[col2],axis=1)
 
-crime_analysis_norm
+crime_analysis_norm.head()
+
+sns.pairplot(crime_analysis_norm,vars=['강도','살인','폭력'],kind='reg',height=3)
+plt.show()
