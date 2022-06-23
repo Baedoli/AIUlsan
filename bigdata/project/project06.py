@@ -108,3 +108,11 @@ crime_analysis_norm.head()
 
 sns.pairplot(crime_analysis_norm,vars=['강도','살인','폭력'],kind='reg',height=3)
 plt.show()
+
+target_col = ['강도','강간','살인','절도','폭력','범죄']
+crime_analysis_norm['범죄'] = crime_analysis_norm['범죄']/5
+crime_analysis_norm_sort = crime_analysis_norm.sort_values(by='강도',ascending=False)
+plt.figure(figsize=(10,10))
+sns.heatmap(crime_analysis_norm_sort[target_col],annot=True,fmt='f', linewidths=.5, cmap='RdPu')
+plt.title('강도 범죄(정규화된 발생 건수로 정렬')
+plt.show()
