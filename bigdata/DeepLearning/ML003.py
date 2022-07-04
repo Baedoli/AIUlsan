@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import SGDClassifier
@@ -111,6 +112,24 @@ layer1.score(x_val, y_val)
 w2 = []
 w3 = []
 for w in layer1.w_history:
+    w2.append(w[2])
+    w3.append(w[3])
+plt.plot(w2,w3)
+plt.plot(w2[-1],w3[-1],'ro')
+plt.xlabel('w[2]')
+plt.ylabel('w[3]')
+plt.show()
+
+train_mean = np.mean(x_train,axis=0)
+train_std = np.std(x_train,axis=0)
+x_train_scaled = (x_train-train_mean)/train_std
+
+layer2 = SingleLayer()
+layer2.fit(x_train_scaled,y_train)
+
+w2 = []
+w3 = []
+for w in layer2.w_history:
     w2.append(w[2])
     w3.append(w[3])
 plt.plot(w2,w3)
