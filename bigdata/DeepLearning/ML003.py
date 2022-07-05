@@ -137,3 +137,27 @@ plt.plot(w2[-1],w3[-1],'ro')
 plt.xlabel('w[2]')
 plt.ylabel('w[3]')
 plt.show()
+
+val_mean = np.mean(x_val,axis=0)
+val_std = np.std(x_val, axis=0)
+x_val_scaled = (x_val - val_mean) / val_std
+layer2.score(x_val_scaled,y_val)
+
+plt.plot(x_train[:50,0],x_val[:50,1],'bo')
+plt.plot(x_val[:50,0],x_val[:50,1],'ro')
+plt.xlabel('feature 1')
+plt.ylabel('feature 2')
+plt.legend(['train set','val set'])
+plt.show()
+
+plt.plot(x_train_scaled[:50,0],x_val_scaled[:50,1],'bo')
+plt.plot(x_val_scaled[:50,0],x_val_scaled[:50,1],'ro')
+plt.xlabel('feature 1')
+plt.ylabel('feature 2')
+plt.legend(['train set','val set'])
+plt.show()
+
+layer4 = SingleLayer()
+layer4.fit(x_train_scaled,y_train,epochs=20)
+layer4.score(x_val_scaled,y_val)
+
