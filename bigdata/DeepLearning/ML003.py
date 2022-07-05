@@ -161,3 +161,4 @@ layer4 = SingleLayer()
 layer4.fit(x_train_scaled,y_train,epochs=20)
 layer4.score(x_val_scaled,y_val)
 
+
