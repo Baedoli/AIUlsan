@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
 
-path = os.getcwd()막
+path = os.getcwd()
 path = path + '/data/'
 
 fish = pd.read_csv(path+'fish.csv')
