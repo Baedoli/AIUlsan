@@ -21,4 +21,26 @@ ss.fit(train_input)
 train_scaled = ss.transform(train_input)
 test_scaled = ss.transform(test_input)
 
+sc = SGDClassifier(loss='log', max_iter=10, random_state=42)
+sc.fit(train_scaled, train_target)
+print(sc.score(train_scaled,train_target))
+print(sc.score(test_scaled,test_target))
 
+sc.partial_fit(train_scaled, train_target)
+print(sc.score(train_scaled,train_target))
+print(sc.score(test_scaled,test_target))
+
+sc = SGDClassifier(loss='log', random_state=42)
+train_score = []
+test_score = []
+
+classes = np.unique(train_target)
+for _ in range(0,300):
+    sc.partial_fit(train_scaled,train_target,classes=classes)
+    train_score.append(sc.score(train_scaled,train_target))
+    test_score.append(sc.score(test_scaled, test_target))
+
+sc = SGDClassifier(loss='log', max_iter=100, tol=None, random_state=42)
+sc.fit(train_scaled, train_target)
+print(sc.score(train_scaled,train_target))
+print(sc.score(test_scaled,test_target))
