@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import os
+from sklearn.decomposition import PCA
 
 path = os.getcwd()
 path = path+'/data/'
@@ -49,4 +50,18 @@ plt.xlabel('k')
 plt.ylabel('inertia')
 plt.show()
 
+pca = PCA(n_components=50)
+pca.fit(fruits_2d)
+
+print(pca.components_.shape)
+draw_fruits(pca.components_.reshape(-1,100,100))
+print(fruits_2d.shape)
+fruits_pca = pca.transform(fruits_2d)
+print(fruits_pca.shape)
+fruits_inverse = pca.inverse_transform(fruits_pca)
+print(fruits_inverse.shape)
+fruits_reconstruct = fruits_inverse.reshape(-1,100,100)
+for start in [0,100,200]:
+    draw_fruits(fruits_reconstruct[start:start+100])
+    print('\n')
 
