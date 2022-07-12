@@ -3,6 +3,8 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import os
 from sklearn.decomposition import PCA
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_validate
 
 path = os.getcwd()
 path = path+'/data/'
@@ -50,6 +52,7 @@ plt.xlabel('k')
 plt.ylabel('inertia')
 plt.show()
 
+# n_components 가 1 이상의 값이 들오오면 개수로 1 보다 작으면 % 0.5 = 50%
 pca = PCA(n_components=50)
 pca.fit(fruits_2d)
 
@@ -65,3 +68,45 @@ for start in [0,100,200]:
     draw_fruits(fruits_reconstruct[start:start+100])
     print('\n')
 
+print(np.sum(pca.explained_variance_ratio_))
+
+plt.plot(pca.explained_variance_ratio_)
+plt.show()
+
+# 지도학습으로 처리 해봄 ..
+lr = LogisticRegression()
+# 지도 학습의 경우 라벨 지정이 필요 하므로 ...
+target = np.array([0]*100+[1]*100+[2]*100)
+scores = cross_validate(lr, fruits_2d, target)
+print(np.mean(scores['test_score']))
+print(np.mean(scores['fit_time']))
+
+scores = cross_validate(lr,fruits_pca,target)
+print(np.mean(scores['test_score']))
+print(np.mean(scores['fit_time']))
+
+pca = PCA(n_components=0.5)
+pca.fit(fruits_2d)
+
+print(pca.n_components_)
+
+fruits_pca = pca.transform(fruits_2d)
+print(fruits_pca.shape)
+
+score = cross_validate(lr,fruits_pca,target)
+print(np.mean(score['test_score']))
+print(np.mean(score['fit_time']))
+
+km = KMeans(n_clusters=3, random_state=42)
+km.fit(fruits_pca)
+print(np.unique(km.labels_, return_counts=True))
+
+for label in range(0,3):
+    draw_fruits(fruits[km.labels_==label])
+    print('\n')
+
+for label in range(0,3):
+    data = fruits_pca[km.labels_==label]
+    plt.scatter(data[:,0], data[:,1])
+plt.legend(['pineapple', 'banana', 'apple'])
+plt.show()

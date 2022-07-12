@@ -10,7 +10,7 @@ print(fruits.shape)
 
 
 print(fruits[0,0,:])
-plt.imshow(fruits[0], cmap='gray')
+plt.imshow(fruits[33], cmap='gray')
 plt.show()
 
 plt.imshow(fruits[0],cmap='gray_r')
@@ -25,6 +25,10 @@ plt.show()
 apple = fruits[0:100].reshape(-1,100*100)
 pineapple = fruits[100:200].reshape(-1,100*100)
 banana = fruits[200:300].reshape(-1,100*100)
+
+np.mean(apple,axis=1)
+
+apple
 
 print(apple.shape)
 print(apple.mean(axis=1))
@@ -54,6 +58,7 @@ abs_diff = np.abs(fruits-apple_mean)
 abs_mean = np.mean(abs_diff, axis=(1,2))
 
 apple_index = np.argsort(abs_mean)[:100]
+apple_index
 fig, axs = plt.subplots(10,10,figsize=(10,10))
 for i in range(10):
     for j in range(10):
